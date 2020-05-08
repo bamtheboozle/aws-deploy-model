@@ -14631,7 +14631,7 @@ this model is better suited for sentiment analysis imo because the embedding vec
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[105]:</div>
+<div class="prompt input_prompt">In&nbsp;[120]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_review</span> <span class="o">=</span> <span class="s1">&#39;The simplest pleasures in life are the best, and this film is one of them. Combining a rather basic storyline of love and adventure this movie transcends the usual weekend fair with wit and unmitigated charm.&#39;</span>
@@ -15100,10 +15100,10 @@ Starting  neg  files
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[117]:</div>
+<div class="prompt input_prompt">In&nbsp;[121]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imdb_predictor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_review</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_review</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15116,39 +15116,15 @@ Starting  neg  files
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[121]:</div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-117-df1b0ab6574a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>imdb_predictor<span class="ansi-blue-fg">.</span>predict<span class="ansi-blue-fg">(</span>test_review<span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/sagemaker/predictor.py</span> in <span class="ansi-cyan-fg">predict</span><span class="ansi-blue-fg">(self, data, initial_args, target_model)</span>
-<span class="ansi-green-intense-fg ansi-bold">    108</span> 
-<span class="ansi-green-intense-fg ansi-bold">    109</span>         request_args <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_create_request_args<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">,</span> initial_args<span class="ansi-blue-fg">,</span> target_model<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 110</span><span class="ansi-red-fg">         </span>response <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>sagemaker_session<span class="ansi-blue-fg">.</span>sagemaker_runtime_client<span class="ansi-blue-fg">.</span>invoke_endpoint<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">**</span>request_args<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    111</span>         <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_handle_response<span class="ansi-blue-fg">(</span>response<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    112</span> 
 
-<span class="ansi-green-fg">~/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/botocore/client.py</span> in <span class="ansi-cyan-fg">_api_call</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    314</span>                     &#34;%s() only accepts keyword arguments.&#34; % py_operation_name)
-<span class="ansi-green-intense-fg ansi-bold">    315</span>             <span class="ansi-red-fg"># The &#34;self&#34; in this scope is referring to the BaseClient.</span>
-<span class="ansi-green-fg">--&gt; 316</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_make_api_call<span class="ansi-blue-fg">(</span>operation_name<span class="ansi-blue-fg">,</span> kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    317</span> 
-<span class="ansi-green-intense-fg ansi-bold">    318</span>         _api_call<span class="ansi-blue-fg">.</span>__name__ <span class="ansi-blue-fg">=</span> str<span class="ansi-blue-fg">(</span>py_operation_name<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/anaconda3/envs/pytorch_p36/lib/python3.6/site-packages/botocore/client.py</span> in <span class="ansi-cyan-fg">_make_api_call</span><span class="ansi-blue-fg">(self, operation_name, api_params)</span>
-<span class="ansi-green-intense-fg ansi-bold">    624</span>             error_code <span class="ansi-blue-fg">=</span> parsed_response<span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Error&#34;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">{</span><span class="ansi-blue-fg">}</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Code&#34;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    625</span>             error_class <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>exceptions<span class="ansi-blue-fg">.</span>from_code<span class="ansi-blue-fg">(</span>error_code<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 626</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> error_class<span class="ansi-blue-fg">(</span>parsed_response<span class="ansi-blue-fg">,</span> operation_name<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    627</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    628</span>             <span class="ansi-green-fg">return</span> parsed_response
-
-<span class="ansi-red-fg">ValidationError</span>: An error occurred (ValidationError) when calling the InvokeEndpoint operation: Endpoint sagemaker-pytorch-2020-05-08-19-43-34-444 of account 381238920159 not found.</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>b&#39;1&#39;</pre>
 </div>
+
 </div>
 
 </div>
@@ -15285,7 +15261,9 @@ Starting  neg  files
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong>
+"worst movie ever, actors were good amazing awesome, but overall the movie was bad"</p>
+<p>the model was pretty confused, but it did think this review was positive (probably because there are more positive words than negative ones)</p>
 
 </div>
 </div>
